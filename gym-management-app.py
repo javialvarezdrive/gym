@@ -10,8 +10,8 @@ SECTIONS = ["Motorista", "Patrullas", "GOA"]
 GRUPOS_TRABAJO = ["Grupo " + str(i) for i in range(1, 10)]
 
 # --- Supabase Credentials from Environment Variables (No Defaults!) ---
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+SUPABASE_URL = os.environ.get("https://jobetajndnzbzbljedio.supabase.co")
+SUPABASE_KEY = os.environ.get("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvYmV0YWpuZG56YnpibGplZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1MDMwMjgsImV4cCI6MjA1NjA3OTAyOH0.tR-HR6s1WPYLVZrdV0f5oly1YFB3CQhFrCGyUIZt9Kw")
 
 # --- Page Configuration ---
 st.set_page_config(

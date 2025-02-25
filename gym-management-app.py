@@ -176,8 +176,8 @@ def main():
             if submit_button:
                 if not nombre or not apellidos or not nip or not seccion or not grupo_trabajo:
                     st.warning("Por favor complete todos los campos")
-                elif not nip.isdigit() or len(nip) != 6:  # NIP validation: 6 digits numeric
-                    st.warning("NIP debe ser numérico y tener 6 dígitos.")
+                elif not nip.isalnum() or len(nip) != 8:  # Example NIP validation: 8 alphanumeric chars
+                    st.warning("NIP debe ser alfanumérico y tener 8 caracteres.")
                 else:
                     df_check = buscar_usuarios(nip)
                     if not df_check.empty:
@@ -260,8 +260,8 @@ def main():
                 if update_button:
                     if not nombre_edit or not apellidos_edit or not nip_edit or not seccion_edit or not grupo_trabajo_edit:
                         st.warning("Por favor complete todos los campos")
-                    elif not nip_edit.isdigit() or len(nip_edit) != 6: # NIP validation: 6 digits numeric - on edit as well
-                        st.warning("NIP debe ser numérico y tener 6 dígitos.")
+                    elif not nip_edit.isalnum() or len(nip_edit) != 8: # NIP validation on edit
+                        st.warning("NIP debe ser alfanumérico y tener 8 caracteres.")
                     else:
                         if nip_edit != selected_user["nip"]:
                             df_check = buscar_usuarios(nip_edit)

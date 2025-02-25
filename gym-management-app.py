@@ -13,8 +13,8 @@ st.set_page_config(
 
 # Credenciales de Supabase (Usando variables de entorno)
 import os
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "TU_URL_DE_SUPABASE")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "TU_API_KEY_DE_SUPABASE")
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://jobetajndnzbzbljedio.supabase.co")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvYmV0YWpuZG56YnpibGplZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1MDMwMjgsImV4cCI6MjA1NjA3OTAyOH0.tR-HR6s1WPYLVZrdV0f5oly1YFB3CQhFrCGyUIZt9Kw")
 
 # Conexión a Supabase
 def init_connection():

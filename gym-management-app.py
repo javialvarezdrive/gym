@@ -3,14 +3,18 @@ import pandas as pd
 from supabase import create_client
 import uuid
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 # --- Constants ---
 SECTIONS = ["Motorista", "Patrullas", "GOA"]
 GRUPOS_TRABAJO = ["Grupo " + str(i) for i in range(1, 10)]
 
-# --- Supabase Credentials HARDCODED (SECURITY RISK!) ---
-SUPABASE_URL = "https://jobetajndnzbzbljedio.supabase.co"  # *** HARDCODED - SECURITY RISK! ***
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvYmV0YWpuZG56YnpibGplZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1MDMwMjgsImV4cCI6MjA1NjA3OTAyOH0.tR-HR6s1WPYLVZrdV0f5oly1YFB3CQhFrCGyUIZt9Kw" # *** HARDCODED - SECURITY RISK! ***
+# --- Supabase Credentials from .env file ---
+SUPABASE_URL = os.environ.get("SUPABASE_URL")  # Get from environment, no default
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")  # Get from environment, no default
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -22,6 +26,9 @@ st.set_page_config(
 # --- Database Connection ---
 def init_connection():
     """Initializes and returns a Supabase client."""
+    if not SUPABASE_URL or not SUPABASE_KEY:
+        st.error("Error: Supabase URL and Key environment variables are not set (check .env file).")
+        return None
     try:
         client = create_client(SUPABASE_URL, SUPABASE_KEY)
         return client
@@ -293,6 +300,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# --- SECURITY WARNING - HARDCODED CREDENTIALS ---
-st.error("SECURITY WARNING: You have hardcoded your Supabase URL and API Key directly in the code. This is NOT recommended for production or sensitive applications. Anyone with access to this code will have access to your Supabase database with the 'anon' permissions.  For better security, use environment variables or a more secure method to manage your credentials.")

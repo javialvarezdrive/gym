@@ -11,9 +11,10 @@ st.set_page_config(
     layout="wide"
 )
 
-# Credenciales de Supabase (Debes completar con tus propias credenciales)
-SUPABASE_URL = "TU_URL_DE_SUPABASE"
-SUPABASE_KEY = "TU_API_KEY_DE_SUPABASE"
+# Credenciales de Supabase (Usando variables de entorno)
+import os
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "TU_URL_DE_SUPABASE")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "TU_API_KEY_DE_SUPABASE")
 
 # Conexión a Supabase
 def init_connection():
